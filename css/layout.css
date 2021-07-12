@@ -4,7 +4,7 @@
 
 .container {
   max-width: 575px;
-  margin: 0 auto;
+  margin: 0 auto 2rem auto;
   padding: 0 1.5rem;
 }
 
@@ -13,8 +13,8 @@
   flex-wrap: wrap;
 }
 
-.column-full,
-.column-half {
+.col-full,
+.col-half {
   width: 100%;
 }
 
@@ -23,12 +23,20 @@
     max-width: 900px;
   }
 
-  .column-full,
-  .column-half {
+  .col-full,
+  .col-half {
     padding: 0 0.75rem;
   }
 
-  .column-half {
+  .col-half {
     width: 50%;
   }
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-right {
+  justify-content: flex-end;
 }
