@@ -15,6 +15,7 @@ $submitForm.addEventListener('submit', function (event) {
   var $entry = {};
   $entry.title = $title.value;
   $entry.notes = $notes.value;
+  $entry.photo = $photoInput.value;
   $entry.nextEntryId = data.nextEntryId;
   data.nextEntryId++;
   data.entries.push($entry);
