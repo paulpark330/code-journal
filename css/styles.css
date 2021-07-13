@@ -1,0 +1,61 @@
+* {
+  font-family: "Awesome", sans-serif;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-container {
+  display: flex;
+  height: 300px;
+}
+
+header {
+  background-color: #562b81;
+  color: white;
+}
+
+label {
+  font-weight: 600;
+}
+
+#title,
+#photo-url {
+  width: 100%;
+  height: 2rem;
+}
+
+#notes {
+  width: 100%;
+  height: 6rem;
+  vertical-align: text-top;
+}
+
+.margin-top-bottom {
+  margin-bottom: 2rem;
+  margin-top: 0.6rem;
+}
+
+.margin-bottom {
+  margin-bottom: 2rem;
+}
+
+.background-gray {
+  background-color: #f0f0f0;
+}
+
+#save-btn {
+  background-color: #562b81;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+input:focus {
+  border: 2px solid #562b81;
+}
