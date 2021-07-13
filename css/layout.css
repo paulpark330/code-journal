@@ -13,9 +13,17 @@
   flex-wrap: wrap;
 }
 
+.display-flex {
+  display: flex;
+}
+
 .col-full,
 .col-half {
   width: 100%;
+}
+
+.entries-col-half {
+  width: 50%;
 }
 
 @media screen and (min-width: 768px) {
@@ -24,7 +32,8 @@
   }
 
   .col-full,
-  .col-half {
+  .col-half,
+  .entries-col-half {
     padding: 0 0.75rem;
   }
 
@@ -39,4 +48,8 @@
 
 .justify-right {
   justify-content: flex-end;
+}
+
+.align-center {
+  align-items: center;
 }

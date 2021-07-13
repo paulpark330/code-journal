@@ -52,7 +52,20 @@ ul {
   background-color: #f0f0f0;
 }
 
+.margin-top-0 {
+  margin-top: 0;
+}
+
 #save-btn {
+  background-color: #562b81;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+#new-btn {
   background-color: #562b81;
   color: white;
   padding: 0.6rem 1rem;
