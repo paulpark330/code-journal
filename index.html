@@ -18,16 +18,20 @@
   <body>
     <header>
       <nav class="container">
-        <div class="row col-full">
+        <div class="row">
+          <div class="col-full">
           <p>Code Journal</p>
+          </div>
         </div>
       </nav>
     </header>
 
     <main class="background-gray">
       <div class="container">
-        <div class="row col-full">
-          <h1>New Entry</h1>
+        <div class="row">
+          <div class="col-full">
+            <h1>New Entry</h1>
+          </div>
         </div>
         <div class="row">
           <div data-view="entry-form">
@@ -61,15 +65,17 @@
                   </div>
                 </div>
               </div>
-              <div class="row col-full">
-                <label for="notes">Notes</label>
-                <input
-                  class="margin-top-bottom"
-                  type="text"
-                  name="notes"
-                  id="notes"
-                  required
-                />
+              <div class="row">
+                <div class="col-full">
+                  <label for="notes">Notes</label>
+                  <input
+                    class="margin-top-bottom"
+                    type="text"
+                    name="notes"
+                    id="notes"
+                    required
+                  />
+                </div>
               </div>
               <div class="row justify-right margin-bottom">
                 <input type="submit" name="save" id="save-btn" value="SAVE" />
