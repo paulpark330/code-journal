@@ -22,6 +22,11 @@ label {
   font-weight: 600;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
 #title,
 #photo-url {
   width: 100%;

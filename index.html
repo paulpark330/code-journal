@@ -20,72 +20,99 @@
       <nav class="container">
         <div class="row">
           <div class="col-full">
-          <p>Code Journal</p>
+            <p>Code Journal</p>
           </div>
         </div>
       </nav>
     </header>
-
     <main class="background-gray">
-      <div class="container">
+      <div class="container hidden" data-view="entry-form">
         <div class="row">
           <div class="col-full">
             <h1>New Entry</h1>
           </div>
         </div>
         <div class="row">
-          <div data-view="entry-form">
-            <form>
-              <div class="row">
-                <div class="col-half margin-top-bottom">
-                  <div class="image-container">
-                    <img src="images/placeholder-image-square.jpg" alt="" />
-                  </div>
-                </div>
-                <div class="col-half">
-                  <div>
-                    <label for="title">Title</label>
-                    <input
-                      class="margin-top-bottom"
-                      type="text"
-                      name="title"
-                      id="title"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label for="photo-url">Photo URL</label>
-                    <input
-                      class="margin-top-bottom"
-                      type="text"
-                      name="photo-url"
-                      id="photo-url"
-                      required
-                    />
-                  </div>
+          <form>
+            <div class="row">
+              <div class="col-half margin-top-bottom">
+                <div class="image-container">
+                  <img src="images/placeholder-image-square.jpg" alt="" />
                 </div>
               </div>
-              <div class="row">
-                <div class="col-full">
-                  <label for="notes">Notes</label>
+              <div class="col-half">
+                <div>
+                  <label for="title">Title</label>
                   <input
                     class="margin-top-bottom"
                     type="text"
-                    name="notes"
-                    id="notes"
+                    name="title"
+                    id="title"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="photo-url">Photo URL</label>
+                  <input
+                    class="margin-top-bottom"
+                    type="text"
+                    name="photo-url"
+                    id="photo-url"
                     required
                   />
                 </div>
               </div>
-              <div class="row justify-right margin-bottom">
-                <input type="submit" name="save" id="save-btn" value="SAVE" />
+            </div>
+            <div class="row">
+              <div class="col-full">
+                <label for="notes">Notes</label>
+                <input
+                  class="margin-top-bottom"
+                  type="text"
+                  name="notes"
+                  id="notes"
+                  required
+                />
               </div>
-            </form>
-          </div>
+            </div>
+            <div class="row justify-right margin-bottom">
+              <input type="submit" name="save" id="save-btn" value="SAVE" />
+            </div>
+          </form>
         </div>
       </div>
+      <div class="container" data-view="entries">
+        <div class="row">
+          <div class="col-full">
+            <h1>Entries</h1>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <div class="row">
+              <div class="col-half">
+                <div class="image-container">
+                  <img src="images/placeholder-image-square.jpg" alt="" />
+                </div>
+              </div>
+              <div class="col-half">
+                <h2>Placeholder</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+                  quas sequi rem nam fugiat neque necessitatibus nostrum ipsam,
+                  fuga distinctio in cum blanditiis doloremque corporis id
+                  asperiores incidunt accusamus deserunt. Lorem ipsum dolor sit
+                  amet consectetur adipisicing elit. Iusto quas sequi rem nam
+                  fugiat neque necessitatibus nostrum ipsam, fuga distinctio in
+                  cum blanditiis doloremque corporis id asperiores incidunt
+                  accusamus deserunt.
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </main>
-
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
   </body>
