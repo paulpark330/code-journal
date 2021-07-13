@@ -5,6 +5,17 @@
 img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.image-container {
+  display: flex;
+  height: 300px;
+}
+
+header {
+  background-color: #562b81;
+  color: white;
 }
 
 label {
@@ -20,6 +31,7 @@ label {
 #notes {
   width: 100%;
   height: 6rem;
+  vertical-align: text-top;
 }
 
 .margin-top-bottom {
@@ -29,11 +41,6 @@ label {
 
 .margin-bottom {
   margin-bottom: 2rem;
-}
-
-header {
-  background-color: #562b81;
-  color: white;
 }
 
 .background-gray {

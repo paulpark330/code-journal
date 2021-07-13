@@ -7,8 +7,9 @@ var data = {
   nextEntryId: 1
 };
 
-
-window.addEventListener("beforeunload", function (event) {
+window.addEventListener('beforeunload', function (event) {
+  var entriesJSON = JSON.stringify(data.entries);
+  this.localStorage.setItem('entries', entriesJSON);
   var dataJSON = JSON.stringify(data);
-  localStorage.setItem('data', dataJSON);
+  this.localStorage.setItem('dataModel', dataJSON);
 });
