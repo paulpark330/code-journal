@@ -27,6 +27,7 @@ $submitForm.addEventListener('submit', function (event) {
   $submitForm.reset();
   $viewForm.setAttribute('class', 'view-form hidden');
   $viewEntries.setAttribute('class', 'view-entries');
+  location.reload();
 });
 
 function renderEntry(entry) {
@@ -76,4 +77,18 @@ $newButton.addEventListener('click', function (event) {
   event.preventDefault();
   $viewForm.setAttribute('class', 'view-form');
   $viewEntries.setAttribute('class', 'view-entries hidden');
+});
+
+window.addEventListener('beforeunload', function (event) {
+  var previousForm = JSON.stringify($viewForm.getAttribute('class'));
+  var previousEntries = JSON.stringify($viewEntries.getAttribute('class'));
+  localStorage.setItem('previousForm', previousForm);
+  localStorage.setItem('previousEntries', previousEntries);
+});
+
+window.addEventListener('DOMContentLoaded', function (event) {
+  var currentForm = localStorage.getItem('previousForm');
+  var currentEntries = localStorage.getItem('previousEntries');
+  $viewForm.setAttribute('class', JSON.parse(currentForm));
+  $viewEntries.setAttribute('class', JSON.parse(currentEntries));
 });
