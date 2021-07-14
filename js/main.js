@@ -58,17 +58,16 @@ function renderEntry(entry) {
   return list;
 }
 
-function switchView(event) {
+function switchView(string) {
   if (event.target.matches('.switch-view')) {
-    var dataView = event.target.getAttribute('data-view');
     for (let i = 0; i < $views.length; i++) {
-      if ($views[i].getAttribute('data-view') === dataView) {
+      if ($views[i].getAttribute('data-view') === string) {
         $views[i].setAttribute('class', 'view');
       } else {
         $views[i].setAttribute('class', 'view hidden');
       }
     }
-    if (dataView === 'entries') {
+    if (string === 'entries') {
       data.view = 'entries';
     } else {
       data.view = 'form';
@@ -86,7 +85,9 @@ $photoInput.addEventListener('input', previewImg);
 
 window.addEventListener('DOMContentLoaded', journalEntryLoop);
 
-window.addEventListener('click', switchView);
+window.addEventListener('click', function (event) {
+  switchView(event.target.getAttribute('data-view'));
+});
 
 $submitForm.addEventListener('submit', submitForm);
 
