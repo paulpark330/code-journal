@@ -9,9 +9,9 @@ var $viewEntries = document.querySelector('.view-entries');
 var $viewForm = document.querySelector('.view-form');
 var $ul = document.querySelector('ul');
 
-$photoInput.addEventListener('input', function (event) {
+function previewImg(event) {
   $photo.setAttribute('src', event.target.value);
-});
+}
 
 function submitForm(event) {
   event.preventDefault();
@@ -64,20 +64,34 @@ function toggle(event) {
     event.preventDefault();
     $viewForm.setAttribute('class', 'view-form');
     $viewEntries.setAttribute('class', 'view-entries hidden');
+    data.view = 'form';
   }
   if (event.target.textContent === 'Entries') {
     event.preventDefault();
     $viewForm.setAttribute('class', 'view-form hidden');
     $viewEntries.setAttribute('class', 'view-entries');
+    data.view = 'entries';
   }
 }
 
-window.addEventListener('DOMContentLoaded', function (event) {
+function journalEntryLoop(event) {
   for (let i = data.entries.length - 1; i >= 0; i--) {
     $ul.appendChild(renderEntry(data.entries[i]));
   }
-});
+}
+
+$photoInput.addEventListener('input', previewImg);
+
+window.addEventListener('DOMContentLoaded', journalEntryLoop);
 
 window.addEventListener('click', toggle);
 
 $submitForm.addEventListener('submit', submitForm);
+
+if (data.view === 'entries') {
+  $viewForm.setAttribute('class', 'view-form hidden');
+  $viewEntries.setAttribute('class', 'view-entries');
+} else {
+  $viewForm.setAttribute('class', 'view-form');
+  $viewEntries.setAttribute('class', 'view-entries hidden');
+}

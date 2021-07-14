@@ -15,5 +15,5 @@ if (previousDataModel !== null) {
 
 window.addEventListener('beforeunload', function (event) {
   var dataJSON = JSON.stringify(data);
-  this.localStorage.setItem('dataModel', dataJSON);
+  localStorage.setItem('dataModel', dataJSON);
 });
