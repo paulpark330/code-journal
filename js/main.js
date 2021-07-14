@@ -9,12 +9,13 @@ var $navEntries = document.querySelector('.nav-entries');
 var $viewEntries = document.querySelector('.view-entries');
 var $viewForm = document.querySelector('.view-form');
 var $newButton = document.querySelector('#new-btn');
+var $ul = document.querySelector('ul');
 
 $photoInput.addEventListener('input', function (event) {
   $photo.setAttribute('src', event.target.value);
 });
 
-$submitForm.addEventListener('submit', function (event) {
+function submitForm(event) {
   event.preventDefault();
   var $entry = {};
   $entry.title = $title.value;
@@ -25,10 +26,11 @@ $submitForm.addEventListener('submit', function (event) {
   data.entries.push($entry);
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   $submitForm.reset();
+  $ul.prepend(renderEntry($entry));
   $viewForm.setAttribute('class', 'view-form hidden');
   $viewEntries.setAttribute('class', 'view-entries');
-  location.reload();
-});
+
+}
 
 function renderEntry(entry) {
 
@@ -59,8 +61,6 @@ function renderEntry(entry) {
   return list;
 }
 
-var $ul = document.querySelector('ul');
-
 window.addEventListener('DOMContentLoaded', function (event) {
   for (let i = data.entries.length - 1; i >= 0; i--) {
     $ul.appendChild(renderEntry(data.entries[i]));
@@ -79,16 +79,4 @@ $newButton.addEventListener('click', function (event) {
   $viewEntries.setAttribute('class', 'view-entries hidden');
 });
 
-window.addEventListener('beforeunload', function (event) {
-  var previousForm = JSON.stringify($viewForm.getAttribute('class'));
-  var previousEntries = JSON.stringify($viewEntries.getAttribute('class'));
-  localStorage.setItem('previousForm', previousForm);
-  localStorage.setItem('previousEntries', previousEntries);
-});
-
-window.addEventListener('DOMContentLoaded', function (event) {
-  var currentForm = localStorage.getItem('previousForm');
-  var currentEntries = localStorage.getItem('previousEntries');
-  $viewForm.setAttribute('class', JSON.parse(currentForm));
-  $viewEntries.setAttribute('class', JSON.parse(currentEntries));
-});
+$submitForm.addEventListener('submit', submitForm);
