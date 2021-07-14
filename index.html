@@ -21,14 +21,16 @@
         <div class="col-full">
           <span><h2 class="nav-code-journal">Code Journal</h2></span>
           <span
-            ><p class="nav-entries"><a href="">Entries</a></p></span
+            ><p class="nav-entries switch-view" data-view="entries">
+              Entries
+            </p></span
           >
         </div>
       </nav>
     </header>
     <main class="background-gray">
       <div class="container">
-        <div class="view-form" data-view="entry-form">
+        <div class="view" data-view="form">
           <div class="row">
             <div class="col-full">
               <h1>New Entry</h1>
@@ -78,13 +80,18 @@
                 </div>
               </div>
               <div class="row justify-right margin-bottom">
-                <input type="submit" name="save" id="save-btn" value="SAVE" />
+                <input
+                  type="submit"
+                  name="save"
+                  id="save-btn"
+                  value="SAVE"
+                />
               </div>
             </form>
           </div>
         </div>
         <div class="container">
-          <div class="view-entries hidden" data-view="entries">
+          <div class="view hidden" data-view="entries">
             <div class="row">
               <div class="entries-col-half display-flex">
                 <h1>Entries</h1>
@@ -92,7 +99,14 @@
               <div
                 class="entries-col-half display-flex align-center justify-right"
               >
-                <input type="button" name="new" id="new-btn" value="NEW" />
+                <input
+                  class="switch-view"
+                  type="button"
+                  name="new"
+                  id="new-btn"
+                  value="NEW"
+                  data-view="form"
+                />
               </div>
             </div>
             <ul></ul>

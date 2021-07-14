@@ -5,8 +5,7 @@ var $photoInput = document.querySelector('#photo-url');
 var $submitForm = document.querySelector('form');
 var $title = document.querySelector('#title');
 var $notes = document.querySelector('#notes');
-var $viewEntries = document.querySelector('.view-entries');
-var $viewForm = document.querySelector('.view-form');
+var $views = document.querySelectorAll('.view');
 var $ul = document.querySelector('ul');
 
 function previewImg(event) {
@@ -25,9 +24,9 @@ function submitForm(event) {
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   $submitForm.reset();
   $ul.prepend(renderEntry($entry));
-  $viewForm.setAttribute('class', 'view-form hidden');
-  $viewEntries.setAttribute('class', 'view-entries');
-
+  $views[0].setAttribute('class', 'view hidden');
+  $views[1].setAttribute('class', 'view');
+  data.view = 'entries';
 }
 
 function renderEntry(entry) {
@@ -59,18 +58,21 @@ function renderEntry(entry) {
   return list;
 }
 
-function toggle(event) {
-  if (event.target.value === 'NEW') {
-    event.preventDefault();
-    $viewForm.setAttribute('class', 'view-form');
-    $viewEntries.setAttribute('class', 'view-entries hidden');
-    data.view = 'form';
-  }
-  if (event.target.textContent === 'Entries') {
-    event.preventDefault();
-    $viewForm.setAttribute('class', 'view-form hidden');
-    $viewEntries.setAttribute('class', 'view-entries');
-    data.view = 'entries';
+function switchView(event) {
+  if (event.target.matches('.switch-view')) {
+    var dataView = event.target.getAttribute('data-view');
+    for (let i = 0; i < $views.length; i++) {
+      if ($views[i].getAttribute('data-view') === dataView) {
+        $views[i].setAttribute('class', 'view');
+      } else {
+        $views[i].setAttribute('class', 'view hidden');
+      }
+    }
+    if (dataView === 'entries') {
+      data.view = 'entries';
+    } else {
+      data.view = 'form';
+    }
   }
 }
 
@@ -84,14 +86,14 @@ $photoInput.addEventListener('input', previewImg);
 
 window.addEventListener('DOMContentLoaded', journalEntryLoop);
 
-window.addEventListener('click', toggle);
+window.addEventListener('click', switchView);
 
 $submitForm.addEventListener('submit', submitForm);
 
 if (data.view === 'entries') {
-  $viewForm.setAttribute('class', 'view-form hidden');
-  $viewEntries.setAttribute('class', 'view-entries');
+  $views[0].setAttribute('class', 'view hidden');
+  $views[1].setAttribute('class', 'view');
 } else {
-  $viewForm.setAttribute('class', 'view-form');
-  $viewEntries.setAttribute('class', 'view-entries hidden');
+  $views[1].setAttribute('class', 'view hidden');
+  $views[0].setAttribute('class', 'view');
 }
