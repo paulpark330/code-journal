@@ -5,6 +5,10 @@ var $photoInput = document.querySelector('#photo-url');
 var $submitForm = document.querySelector('form');
 var $title = document.querySelector('#title');
 var $notes = document.querySelector('#notes');
+var $navEntries = document.querySelector('.nav-entries');
+var $viewEntries = document.querySelector('.view-entries');
+var $viewForm = document.querySelector('.view-form');
+var $newButton = document.querySelector('#new-btn');
 
 $photoInput.addEventListener('input', function (event) {
   $photo.setAttribute('src', event.target.value);
@@ -21,6 +25,8 @@ $submitForm.addEventListener('submit', function (event) {
   data.entries.push($entry);
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   $submitForm.reset();
+  $viewForm.setAttribute('class', 'view-form hidden');
+  $viewEntries.setAttribute('class', 'view-entries');
 });
 
 function renderEntry(entry) {
@@ -44,20 +50,30 @@ function renderEntry(entry) {
   divColHalf2.setAttribute('class', 'col-half');
   divRow.appendChild(divColHalf2);
   var title = document.createElement('h2');
-  title.setAttribute('class', 'margin-top-0');
   title.textContent = entry.title;
   divColHalf2.appendChild(title);
   var notes = document.createElement('p');
   notes.textContent = entry.notes;
   divColHalf2.appendChild(notes);
-
   return list;
 }
 
 var $ul = document.querySelector('ul');
 
 window.addEventListener('DOMContentLoaded', function (event) {
-  for (let i = 0; i < data.entries.length; i++) {
+  for (let i = data.entries.length - 1; i >= 0; i--) {
     $ul.appendChild(renderEntry(data.entries[i]));
   }
+});
+
+$navEntries.addEventListener('click', function (event) {
+  event.preventDefault();
+  $viewForm.setAttribute('class', 'view-form hidden');
+  $viewEntries.setAttribute('class', 'view-entries');
+});
+
+$newButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  $viewForm.setAttribute('class', 'view-form');
+  $viewEntries.setAttribute('class', 'view-entries hidden');
 });
