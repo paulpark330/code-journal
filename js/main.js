@@ -47,9 +47,18 @@ function renderEntry(entry) {
   var divColHalf2 = document.createElement('div');
   divColHalf2.setAttribute('class', 'col-half');
   divRow.appendChild(divColHalf2);
+  var divIconTitle = document.createElement('div');
+  divIconTitle.setAttribute(
+    'class',
+    'display-flex justify-between align-center'
+  );
+  divColHalf2.appendChild(divIconTitle);
   var title = document.createElement('h2');
   title.textContent = entry.title;
-  divColHalf2.appendChild(title);
+  divIconTitle.appendChild(title);
+  var icon = document.createElement('i');
+  icon.setAttribute('class', 'fas fa-pencil-alt');
+  divIconTitle.appendChild(icon);
   var notes = document.createElement('p');
   notes.textContent = entry.notes;
   divColHalf2.appendChild(notes);
