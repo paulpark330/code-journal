@@ -89,3 +89,8 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+i {
+  color: #562b81;
+  font-size: 1.4rem;
+}
