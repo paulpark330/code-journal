@@ -11,6 +11,7 @@ var $heading = document.querySelector('.form-heading');
 var $deleteEntry = document.querySelector('.delete-entry');
 var $modal = document.querySelector('.modal');
 var $cancelBtn = document.querySelector('.cancel-btn');
+var $confirmDelete = document.querySelector('.confirm-btn');
 
 function previewImg(event) {
   $photo.setAttribute('src', event.target.value);
@@ -57,7 +58,6 @@ function submitForm(event) {
 }
 
 function renderEntry(entry) {
-
   var list = document.createElement('li');
   list.setAttribute('class', 'margin-bottom');
   list.setAttribute('data-entry-id', entry.entryId);
@@ -118,7 +118,6 @@ function editEntry(event) {
   if (event.target.matches('.edit')) {
     switchView('form');
     $heading.textContent = 'Edit Entry';
-    // console.log(event.target.closest('li').getAttribute('data-entry-id'));
     for (let i = 0; i < data.entries.length; i++) {
       if (
         data.entries[i].entryId ===
@@ -133,6 +132,22 @@ function editEntry(event) {
     $notes.value = data.editing.notes;
   }
   $deleteEntry.className = 'delete-entry';
+}
+
+function deleteEntry(event) {
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice(i, 1);
+      var $li = document.querySelectorAll('li');
+      for (let i = 0; i < $li.length; i++) {
+        if (parseInt($li[i].getAttribute('data-entry-id')) === data.editing.entryId) {
+          $li[i].remove();
+        }
+      }
+      $modal.className = 'modal display-none';
+      switchView('entries');
+    }
+  }
 }
 
 function modalOn(event) {
@@ -162,4 +177,8 @@ $deleteEntry.addEventListener('click', modalOn);
 
 $cancelBtn.addEventListener('click', modalOff);
 
+$confirmDelete.addEventListener('click', deleteEntry);
+
 switchView(data.view);
+
+data.nextEntryId = data.entries.length + 1;

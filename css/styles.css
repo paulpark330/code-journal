@@ -95,6 +95,14 @@ i {
   font-size: 1.4rem;
 }
 
+.delete-entry {
+  border: none;
+  background-color: none;
+  color: red;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
 .display-none {
   display: none;
 }
