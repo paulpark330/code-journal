@@ -180,5 +180,3 @@ $cancelBtn.addEventListener('click', modalOff);
 $confirmDelete.addEventListener('click', deleteEntry);
 
 switchView(data.view);
-
-data.nextEntryId = data.entries.length + 1;
