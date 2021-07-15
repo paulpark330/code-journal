@@ -25,7 +25,6 @@ function submitForm(event) {
   $submitForm.reset();
   $ul.prepend(renderEntry($entry));
   switchView('entries');
-  data.view = 'entries';
 }
 
 function renderEntry(entry) {
@@ -65,11 +64,7 @@ function switchView(string) {
       $views[i].setAttribute('class', 'view hidden');
     }
   }
-  if (string === 'entries') {
-    data.view = string;
-  } else {
-    data.view = 'form';
-  }
+  data.view = string;
 }
 
 function journalEntryLoop(event) {
@@ -90,6 +85,4 @@ window.addEventListener('click', function (event) {
 
 $submitForm.addEventListener('submit', submitForm);
 
-if (data.view === 'entries') {
-  switchView(data.view);
-}
+switchView(data.view);
