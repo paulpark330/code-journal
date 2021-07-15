@@ -33,7 +33,7 @@
         <div class="view" data-view="form">
           <div class="row">
             <div class="col-full">
-              <h1>New Entry</h1>
+              <h1 class="form-heading">New Entry</h1>
             </div>
           </div>
           <div class="row">
@@ -79,7 +79,8 @@
                   />
                 </div>
               </div>
-              <div class="row justify-right margin-bottom">
+              <div class="row justify-between align-center margin-bottom">
+                <a href="" class="delete-entry hidden">Delete Entry</a>
                 <input type="submit" name="save" id="save-btn" value="SAVE" />
               </div>
             </form>
@@ -104,12 +105,20 @@
                 />
               </div>
             </div>
-            <ul>
-            </ul>
+            <ul></ul>
           </div>
         </div>
       </div>
     </main>
+    <div class="modal display-none">
+      <div class="modal-content">
+        <h3>Are you Sure you want to delete this entry?</h3>
+        <div class="display-flex justify-between modal-buttons">
+        <button class="cancel-btn">CANCEL</button>
+        <button class="confirm-btn">CONFIRM</button>
+        </div>
+      </div>
+    </div>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
   </body>

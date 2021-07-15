@@ -7,6 +7,10 @@ var $title = document.querySelector('#title');
 var $notes = document.querySelector('#notes');
 var $views = document.querySelectorAll('.view');
 var $ul = document.querySelector('ul');
+var $heading = document.querySelector('.form-heading');
+var $deleteEntry = document.querySelector('.delete-entry');
+var $modal = document.querySelector('.modal');
+var $cancelBtn = document.querySelector('.cancel-btn');
 
 function previewImg(event) {
   $photo.setAttribute('src', event.target.value);
@@ -101,6 +105,7 @@ function switchView(string) {
   }
   data.editing = null;
   data.view = string;
+  $deleteEntry.className = 'delete-entry hidden';
 }
 
 function journalEntryLoop(event) {
@@ -112,7 +117,7 @@ function journalEntryLoop(event) {
 function editEntry(event) {
   if (event.target.matches('.edit')) {
     switchView('form');
-
+    $heading.textContent = 'Edit Entry';
     // console.log(event.target.closest('li').getAttribute('data-entry-id'));
     for (let i = 0; i < data.entries.length; i++) {
       if (
@@ -127,6 +132,16 @@ function editEntry(event) {
     $photoInput.value = data.editing.photo;
     $notes.value = data.editing.notes;
   }
+  $deleteEntry.className = 'delete-entry';
+}
+
+function modalOn(event) {
+  event.preventDefault();
+  $modal.className = 'modal';
+}
+
+function modalOff(event) {
+  $modal.className = 'modal display-none';
 }
 
 $photoInput.addEventListener('input', previewImg);
@@ -142,5 +157,9 @@ window.addEventListener('click', function (event) {
 $submitForm.addEventListener('submit', submitForm);
 
 $ul.addEventListener('click', editEntry);
+
+$deleteEntry.addEventListener('click', modalOn);
+
+$cancelBtn.addEventListener('click', modalOff);
 
 switchView(data.view);
