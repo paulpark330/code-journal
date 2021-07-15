@@ -24,8 +24,7 @@ function submitForm(event) {
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   $submitForm.reset();
   $ul.prepend(renderEntry($entry));
-  $views[0].setAttribute('class', 'view hidden');
-  $views[1].setAttribute('class', 'view');
+  switchView('entries');
   data.view = 'entries';
 }
 
@@ -59,19 +58,17 @@ function renderEntry(entry) {
 }
 
 function switchView(string) {
-  if (event.target.matches('.switch-view')) {
-    for (let i = 0; i < $views.length; i++) {
-      if ($views[i].getAttribute('data-view') === string) {
-        $views[i].setAttribute('class', 'view');
-      } else {
-        $views[i].setAttribute('class', 'view hidden');
-      }
-    }
-    if (string === 'entries') {
-      data.view = 'entries';
+  for (let i = 0; i < $views.length; i++) {
+    if ($views[i].getAttribute('data-view') === string) {
+      $views[i].setAttribute('class', 'view');
     } else {
-      data.view = 'form';
+      $views[i].setAttribute('class', 'view hidden');
     }
+  }
+  if (string === 'entries') {
+    data.view = string;
+  } else {
+    data.view = 'form';
   }
 }
 
@@ -86,15 +83,13 @@ $photoInput.addEventListener('input', previewImg);
 window.addEventListener('DOMContentLoaded', journalEntryLoop);
 
 window.addEventListener('click', function (event) {
-  switchView(event.target.getAttribute('data-view'));
+  if (event.target.matches('.switch-view')) {
+    switchView(event.target.getAttribute('data-view'));
+  }
 });
 
 $submitForm.addEventListener('submit', submitForm);
 
 if (data.view === 'entries') {
-  $views[0].setAttribute('class', 'view hidden');
-  $views[1].setAttribute('class', 'view');
-} else {
-  $views[1].setAttribute('class', 'view hidden');
-  $views[0].setAttribute('class', 'view');
+  switchView(data.view);
 }
