@@ -12,6 +12,7 @@ var $deleteEntry = document.querySelector('.delete-entry');
 var $modal = document.querySelector('.modal');
 var $cancelBtn = document.querySelector('.cancel-btn');
 var $confirmDelete = document.querySelector('.confirm-btn');
+var $searchBar = document.querySelector('.search-bar');
 
 function previewImg(event) {
   $photo.setAttribute('src', event.target.value);
@@ -159,6 +160,22 @@ function modalOff(event) {
   $modal.className = 'modal display-none';
 }
 
+function searchEntries(event) {
+  var $entryTitle = document.querySelectorAll('h2');
+  var $li = document.querySelectorAll('li');
+  for (let i = 0; i < $entryTitle.length; i++) {
+    $li[i].className += ' hidden';
+    if (event.target.value.toLowerCase() === $entryTitle[i].textContent.toLowerCase()) {
+      $li[i].className = 'margin-bottom';
+    }
+  }
+  if (event.target.value.toLowerCase() === '') {
+    for (let i = 0; i < $entryTitle.length; i++) {
+      $li[i].className = 'margin-bottom';
+    }
+  }
+}
+
 $photoInput.addEventListener('input', previewImg);
 
 window.addEventListener('DOMContentLoaded', journalEntryLoop);
@@ -178,5 +195,7 @@ $deleteEntry.addEventListener('click', modalOn);
 $cancelBtn.addEventListener('click', modalOff);
 
 $confirmDelete.addEventListener('click', deleteEntry);
+
+$searchBar.addEventListener('input', searchEntries);
 
 switchView(data.view);
